@@ -71,10 +71,10 @@ docker stop nginx
 docker rm nginx
 
 # rm k8s objects
-kubectl delete po all
-kubectl delete deploy all
-kubectl delete svc all
-kubectl delete manifest rewrite-middleware
+kubectl delete svc --all
+kubectl delete deploy --all
+kubectl delete ingress --all
+kubectl delete middleware --all
 
 # destroy cluster
 k3d cluster delete
