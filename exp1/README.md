@@ -24,7 +24,7 @@ kubectl apply -f k8s
 
 # Run dockerized nginx with reverse-proxying conf:
 ```
-docker run -p 80:80 -v $(pwd)/nginx3.conf:/etc/nginx/nginx.conf:ro -d --name nginx nginx
+docker run -p 80:80 -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro -d --name nginx nginx
 ```
 
 # Test
