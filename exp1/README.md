@@ -17,7 +17,7 @@ Push to this github repo to trigger build & push of all images.
 k3d cluster create --agents 1 -p "8081:80@loadbalancer"
 ```
 
-# Deploy middleware and services to k3d:
+# Deploy services, ingress and middleware to k3d:
 ```
 kubectl apply -f k8s
 ```
@@ -74,7 +74,7 @@ docker rm nginx
 kubectl delete svc --all
 kubectl delete deploy --all
 kubectl delete ingress --all
-kubectl delete middleware --all
+kubectl delete middleware.traefik.io --all
 
 # destroy cluster
 k3d cluster delete
