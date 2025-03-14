@@ -1,0 +1,29 @@
+name: Build and Push to GHCR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write   # Required for pushing to GHCR
+      contents: read    # Required for repo access
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and tag Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/svc3:latest .
+          docker tag ghcr.io/${{ github.repository }}/svc3:${{ github.sha }}
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ github.repository }}/svc3:latest
+          docker push ghcr.io/${{ github.repository }}/svc3:${{ github.sha }}
