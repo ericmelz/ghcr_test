@@ -21,7 +21,6 @@ jobs:
       - name: Build and tag Docker image
         run: |
           docker build -t ghcr.io/${{ github.repository }}/svc3:latest .
-          docker tag ghcr.io/${{ github.repository }}/svc3:${{ github.sha }}
 
       - name: Push Docker image
         run: |
