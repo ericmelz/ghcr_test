@@ -35,6 +35,25 @@ curl localhost/svc2
 curl localhost/svc3
 ```
 
+# Troubleshooting:
+Open up separate windows for each service and tail the logs
+
+Terminal 1
+```
+export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
+kubectl logs -f $(kubectl get po|grep svc1|cut -d' ' -f1)
+```
+Terminal 2
+```
+export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
+kubectl logs -f $(kubectl get po|grep svc2|cut -d' ' -f1)
+```
+Terminal3
+```
+export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
+kubectl logs -f $(kubectl get po|grep svc2|cut -d' ' -f1)
+```
+
 # Cleanup
 ```
 # rm docker nginx
