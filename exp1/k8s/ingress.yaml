@@ -20,13 +20,20 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nginx-svc1
+            name: svc1
             port:
               number: 80
       - path: /svc2
         pathType: Prefix
         backend:
           service:
-            name: nginx-svc2
+            name: svc2
+            port:
+              number: 80
+      - path: /svc3
+        pathType: Prefix
+        backend:
+          service:
+            name: svc3
             port:
               number: 80
