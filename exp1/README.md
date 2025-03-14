@@ -14,7 +14,7 @@ Push to this github repo to trigger build & push of all images.
 # Start a k3d cluster:
 
 ```
-k3d cluster create --api-port 6550 -p "8081:80@loadbalancer" --agents 2
+k3d cluster create -p "8081:80@loadbalancer"
 ```
 
 # Deploy middleware and services to k3d:
@@ -48,5 +48,5 @@ kubectl delete svc all
 kubectl delete manifest rewrite-middleware
 
 # destroy cluster
-k3s cluster delete
+k3d cluster delete
 ```
