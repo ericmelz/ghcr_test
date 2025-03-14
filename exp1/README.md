@@ -40,6 +40,16 @@ Open up separate windows for each service and tail the logs
 
 Terminal 1
 ```
+docker logs -f nginx
+```
+Terminal 2
+```
+export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
+kubectl logs -f $(kubectl get po|grep nginx|cut -d' ' -f1)
+```
+
+Terminal 1
+```
 export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
 kubectl logs -f $(kubectl get po|grep svc1|cut -d' ' -f1)
 ```
