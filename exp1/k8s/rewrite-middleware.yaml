@@ -1,0 +1,11 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc2-rewrite
+  namespace: default
+spec:
+  stripPrefix:
+    prefixes:
+      - "/svc1"
+      - "/svc2"
+      - "/svc3"      

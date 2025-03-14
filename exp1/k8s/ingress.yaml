@@ -1,0 +1,32 @@
+# apiVersion: networking.k8s.io/v1beta1 # for k3s < v1.19
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: svc-nginx
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: default-svc2-rewrite@kubernetescrd
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80
+      - path: /svc1
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-svc1
+            port:
+              number: 80
+      - path: /svc2
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-svc2
+            port:
+              number: 80
