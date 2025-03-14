@@ -20,7 +20,7 @@ jobs:
 
       - name: Build and tag Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/svc3:latest services/sv3
+          docker build -t ghcr.io/${{ github.repository }}/svc3:latest services/svc3
           IMAGE_ID=$(docker images -q ghcr.io/ericmelz/ghcr_test/svc3:latest)
           docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:latest
           docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:${{ github.sha }}
