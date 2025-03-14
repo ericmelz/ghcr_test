@@ -14,7 +14,7 @@ Push to this github repo to trigger build & push of all images.
 # Start a k3d cluster:
 
 ```
-k3d cluster create -p "8081:80@loadbalancer"
+k3d cluster create --agents 1 -p "8081:80@loadbalancer"
 ```
 
 # Deploy middleware and services to k3d:
