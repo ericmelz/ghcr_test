@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: svc-nginx
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: rewrite-middleware@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-rewrite-middleware@kubernetescrd
 spec:
   rules:
   - http:

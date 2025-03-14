@@ -61,7 +61,7 @@ kubectl logs -f $(kubectl get po|grep svc2|cut -d' ' -f1)
 Terminal3
 ```
 export KUBECONFIG=/Users/ericmelz/.config/k3d/kubeconfig-k3s-default.yaml
-kubectl logs -f $(kubectl get po|grep svc2|cut -d' ' -f1)
+kubectl logs -f $(kubectl get po|grep svc3|cut -d' ' -f1)
 ```
 
 # Cleanup
