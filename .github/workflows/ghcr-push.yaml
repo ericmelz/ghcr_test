@@ -18,14 +18,23 @@ jobs:
       - name: Login to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build and tag Docker image
+      - name: Build and tag Docker images
         run: |
+          docker build -t ghcr.io/${{ github.repository }}/svc3:latest services/svc2
+          IMAGE_ID=$(docker images -q ghcr.io/ericmelz/ghcr_test/svc3:latest)
+          docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:latest
+          docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:${{ github.sha }}
+
           docker build -t ghcr.io/${{ github.repository }}/svc3:latest services/svc3
           IMAGE_ID=$(docker images -q ghcr.io/ericmelz/ghcr_test/svc3:latest)
           docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:latest
           docker tag $IMAGE_ID ghcr.io/ericmelz/ghcr_test/svc3:${{ github.sha }}
 
+
       - name: Push Docker image
         run: |
+          docker push ghcr.io/${{ github.repository }}/svc2:latest
+          docker push ghcr.io/${{ github.repository }}/svc2:${{ github.sha }}
+
           docker push ghcr.io/${{ github.repository }}/svc3:latest
           docker push ghcr.io/${{ github.repository }}/svc3:${{ github.sha }}
